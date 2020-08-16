@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Movie from "./movie";
 import Pagination from "./pagination";
-import { Table } from "react-bootstrap";
+import { Table, Navbar, Form, FormControl, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MovieDetail from "./moviedetail";
 import { Empty } from "antd";
@@ -76,37 +76,59 @@ const Movies = () => {
     <React.Fragment>
       {currentMovie == null ? (
         <div>
-          <form onSubmit={getSearch} className="search-form">
-            <input
-              className="search-bar"
-              type="text"
-              value={search}
+          <Navbar
+            bg="light"
+            className="navbar navbar-light bg-light justify-content-between"
+          >
+            <Navbar.Brand>
+              <i class="fas fa-film"></i>
+            </Navbar.Brand>
+            <Form
+              inline
+              onSubmit={getSearch}
               onChange={updateSearch}
-            />
-            <button className="search-button" type="submit">
-              Search
-            </button>
-          </form>
-
-          {movies.Response == "True" ? (
+              value={search}
+            >
+              <FormControl
+                type="text"
+                placeholder="Search"
+                className="mr-sm-2"
+              />
+              <Button variant="danger" type="submit">
+                Search
+              </Button>
+            </Form>
+          </Navbar>
+          {movies == null ? (
             <Empty />
           ) : (
-            <div>
-              <Table striped bordered hover>
-                <thead>
-                  <tr>
-                    <th>#</th>
-                    <th>Title</th>
-                    <th>Released date</th>
-                    <th>Type</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {getCurrentMovies().map((movie, index) => (
-                    <Movie key={index} movie={movie} display={handleDisplay} />
-                  ))}
-                </tbody>
-              </Table>
+            <div
+              className="moviesList"
+              style={{
+                paddingTop: 50,
+              }}
+            >
+              <main className="container">
+                <Table striped bordered hover>
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Title</th>
+                      <th>Released date</th>
+                      <th>Type</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {getCurrentMovies().map((movie, index) => (
+                      <Movie
+                        key={index}
+                        movie={movie}
+                        display={handleDisplay}
+                      />
+                    ))}
+                  </tbody>
+                </Table>
+              </main>
               <Pagination
                 moviesPerPage={moviesPerPage}
                 totalMovies={movies.length}

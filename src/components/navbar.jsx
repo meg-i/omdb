@@ -1,4 +1,5 @@
 import React from "react";
+import { Navbar, Form, FormControl, Button } from "react-bootstrap";
 
 const NavBar = (props) => {
   const updateSearch = (e) => {
@@ -12,35 +13,17 @@ const NavBar = (props) => {
   };
 
   return (
-    // <Navbar bg="dark" variant="dark">
-    //   <Navbar.Brand href="#home">
-    //     <i class="fas fa-film">OMDB</i>
-    //   </Navbar.Brand>
-    //   <Form inline>
-    //     <FormControl
-    //       type="text"
-    //       placeholder="Search"
-    //       className="mr-sm-2"
-    //       onSubmit={getSearch}
-    //       onChange={updateSearch}
-    //       value={search}
-    //     />
-    //     <Button variant="outline-success" type="submit">
-    //       Search
-    //     </Button>
-    //   </Form>
-    // </Navbar>
-    <form onSubmit={getSearch} className="search-form">
-      <input
-        className="search-bar"
-        type="text"
-        value={search}
-        onChange={updateSearch}
-      />
-      <button className="search-button" type="submit">
-        Search
-      </button>
-    </form>
+    <Navbar className="navbar navbar-dark bg-dark justify-content-between">
+      <Navbar.Brand>
+        <i class="fas fa-film"></i>
+      </Navbar.Brand>
+      <Form inline onSubmit={getSearch} onChange={updateSearch} value={search}>
+        <FormControl type="text" placeholder="Search" className="mr-sm-2" />
+        <Button variant="outline-success" type="submit">
+          Search
+        </Button>
+      </Form>
+    </Navbar>
   );
 };
 

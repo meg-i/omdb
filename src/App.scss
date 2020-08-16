@@ -1,0 +1,33 @@
+%font {
+  font-family: webfont, sans-serif;
+  font-weight: 700;
+}
+
+.container {
+  @extend %font;
+  //   background-image: linear-gradient(
+  //     to top,
+  //     #fdcbf1 0%,
+  //     #fdcbf1 1%,
+  //     #e6dee9 100%
+  //   );
+}
+
+h1 {
+  @extend %font;
+  font-size: 2em;
+}
+
+.btn {
+  @extend %font;
+  display: inline-block;
+  padding: 1em;
+}
+
+.moviesList {
+  padding-top: 200;
+}
+
+thead {
+  background-color: lightpink;
+}

@@ -1,12 +1,11 @@
 import React from "react";
 import Movies from "./components/movies";
+import "./App.scss";
 
 export default function App() {
   return (
     <React.Fragment>
-      <main className="container">
-        <Movies />
-      </main>
+      <Movies />
     </React.Fragment>
   );
 }

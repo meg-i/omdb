@@ -29,7 +29,7 @@ const MovieDetail = (props) => {
         </Button>
       </Row>
       <Row>
-        <Col span={11} style={{ paddingLeft: 150, paddingBottom: 50 }}>
+        <Col span={11} style={{ paddingLeft: 200, paddingBottom: 50 }}>
           <img
             src={
               Poster === "N/A"

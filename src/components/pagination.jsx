@@ -8,17 +8,19 @@ const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
   }
 
   return (
-    <nav>
-      <ul className="pagination">
-        {pageNumbers.map((number) => (
-          <li key={number} className="page-item">
-            <button onClick={() => paginate(number)} className="page-link">
-              {number}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </nav>
+    <div class="row d-flex justify-content-center">
+      <nav>
+        <ul className="pagination">
+          {pageNumbers.map((number) => (
+            <li key={number} className="page-item">
+              <button onClick={() => paginate(number)} className="page-link">
+                {number}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
   );
 };
 
