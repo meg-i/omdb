@@ -1,6 +1,4 @@
-import React, { Component } from "react";
-import { Image } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import React from "react";
 
 const Movie = ({ display, movie }) => {
   return (

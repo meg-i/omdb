@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 
 const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
   const pageNumbers = [];
@@ -8,7 +8,7 @@ const Pagination = ({ moviesPerPage, totalMovies, paginate }) => {
   }
 
   return (
-    <div class="row d-flex justify-content-center">
+    <div className="row d-flex justify-content-center">
       <nav>
         <ul className="pagination">
           {pageNumbers.map((number) => (

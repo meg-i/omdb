@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import Movie from "./movie";
 import Pagination from "./pagination";
 import { Table, Navbar, Form, FormControl, Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
 import MovieDetail from "./moviedetail";
 import { Empty } from "antd";
 
@@ -19,14 +18,16 @@ const Movies = () => {
   const [currentMovie, setCurrentMovie] = useState(null);
 
   useEffect(() => {
-    const getMovies = async () => {
-      const response = await fetch(
-        `http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`
-      );
-
-      const data = await response.json();
-      console.log(data);
-      data.Response == "True" ? setMovies(data.Search) : setMovies(null);
+    const getMovies = () => {
+      fetch(`http://www.omdbapi.com/?apikey=${API_KEY}&s=${query}`)
+        .then((resp) => resp)
+        .then((resp) => resp.json())
+        .then((response) => {
+          console.log(response);
+          response.Response === "True"
+            ? setMovies(response.Search)
+            : setMovies(null);
+        });
     };
     getMovies();
   }, [query]);
@@ -34,7 +35,9 @@ const Movies = () => {
   const getCurrentMovies = () => {
     const indexOfLastMovie = currentPage * moviesPerPage;
     const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
-    movies.sort((a, b) => a.Year - b.Year);
+    movies.sort(function (a, b) {
+      return a["Year"].localeCompare(b["Year"]);
+    });
     const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
     return currentMovies;
   };
@@ -61,7 +64,7 @@ const Movies = () => {
         setDetailRequest(false);
         setShowDetail(response);
         setCurrentMovie(response);
-        console.log(currentMovie);
+        console.log(response);
       })
       .catch(({ message }) => {
         setDetailRequest(false);
@@ -81,7 +84,7 @@ const Movies = () => {
             className="navbar navbar-light bg-light justify-content-between"
           >
             <Navbar.Brand>
-              <i class="fas fa-film"></i>
+              <i className="fas fa-film"></i>
             </Navbar.Brand>
             <Form
               inline

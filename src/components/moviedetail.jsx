@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import { Row, Col, Tag, Layout, Typography, Button } from "antd";
 import "antd/dist/antd.css";
-const TextTitle = Typography.Title;
+const StyledTitle = Typography.Title;
 const MovieDetail = (props) => {
   const {
     Title,
@@ -12,7 +11,10 @@ const MovieDetail = (props) => {
     Runtime,
     Genre,
     Plot,
+    Director,
+    Actors,
   } = props.currentMovie;
+
   return (
     <Layout style={{ marginTop: 50 }}>
       <Row
@@ -42,7 +44,7 @@ const MovieDetail = (props) => {
         <Col span={13}>
           <Row>
             <Col span={21}>
-              <TextTitle level={4}>{Title}</TextTitle>
+              <StyledTitle level={3}>{Title}</StyledTitle>
             </Col>
             <Col span={3}>
               <Button type="primary" danger>
@@ -57,6 +59,16 @@ const MovieDetail = (props) => {
               <Tag>{Rated}</Tag>
               <Tag>{Runtime}</Tag>
               <Tag>{Genre}</Tag>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <h6>
+                <strong>Director:</strong> {Director}
+              </h6>
+              <h6>
+                <strong>Actors:</strong> {Actors}
+              </h6>
             </Col>
           </Row>
           <Row>
