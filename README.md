@@ -1,6 +1,6 @@
 ## OMDB Website (React)
 
-Go to project directory: `cd film-app`
+Go to project directory: `cd omdb`
 
 Run the app in the development mode: `npm start`
 
